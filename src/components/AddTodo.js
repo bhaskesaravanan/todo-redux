@@ -14,8 +14,10 @@ function AddTodo(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          props.onAddClick(taskInput.value.trim());
-          taskInput.value = '';
+          if (taskInput.value !== '') {
+            props.onAddClick(taskInput.value.trim());
+            taskInput.value = '';
+          }
         }}
       >
         <input ref={(el) => { taskInput = el; }} type="text" placeholder="enter task" />
